@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ScottPlot.Avalonia" Version="4.1.16" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\InterFace.Plugin\InterFace.Plugin\InterFace.Plugin.csproj" />
   </ItemGroup>
 

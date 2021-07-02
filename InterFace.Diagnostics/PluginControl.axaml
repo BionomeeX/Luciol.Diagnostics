@@ -8,6 +8,7 @@
              xmlns:views="using:InterFace.Plugin">
   <DockPanel>
     <Grid>
+      <ScottPlot:AvaPlot Name="TrianglePerformancePlot"/>
     </Grid>
   </DockPanel>
 </UserControl>

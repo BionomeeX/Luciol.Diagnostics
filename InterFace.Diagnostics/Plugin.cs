@@ -15,9 +15,13 @@ namespace InterFace.Diagnostics
             => new PluginControl();
 
         public override object GetViewModel()
-            => new PluginControlViewModel();
+            => _viewModel;
 
         protected override void Init()
-        { }
+        {
+            _viewModel.Init(Context);
+        }
+
+        private PluginControlViewModel _viewModel = new();
     }
 }
