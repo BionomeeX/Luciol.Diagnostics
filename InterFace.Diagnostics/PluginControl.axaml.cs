@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace InterFace.Diagnostics
 {
-    public partial class PluginControl : ReactiveUserControl<PluginControlViewModel>
+    public class PluginControl : ReactiveUserControl<PluginControlViewModel>
     {
         public PluginControl()
         {

@@ -22,6 +22,6 @@ namespace InterFace.Diagnostics
             _viewModel.Init(Context);
         }
 
-        private PluginControlViewModel _viewModel = new();
+        private readonly PluginControlViewModel _viewModel = new();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace InterFace.Diagnostics
 {
-    class Program
+    static class Program
     {
         public static void Main()
         {
