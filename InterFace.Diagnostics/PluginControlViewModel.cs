@@ -10,8 +10,9 @@ namespace InterFace.Diagnostics
 {
     public class PluginControlViewModel : ReactiveObject
     {
-        public void Init(IContext context)
+        public void Init(Plugin plugin, IContext context)
         {
+            Plugin = plugin;
             context.MainTriangle.OnDataLoading += (sender, e) =>
             {
                 _triangleLoadTime = DateTime.Now;
@@ -32,6 +33,7 @@ namespace InterFace.Diagnostics
 
         private DateTime _triangleLoadTime;
         private readonly List<double> _points = new();
+        public Plugin Plugin { private set; get; }
 
         public Interaction<double[], Unit> UpdatePerformanceGraph { get; } = new();
         public Interaction<int, Unit> SetCleanPointGraph { get; } = new();

@@ -1,11 +1,9 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
-using Avalonia.Threading;
+using InterFace.Plugin.Preference;
 using ReactiveUI;
 using ScottPlot.Avalonia;
-using System.Drawing;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
@@ -41,7 +39,7 @@ namespace InterFace.Diagnostics
             plot.Plot.AddScatter(
                 xs: Enumerable.Range(0, interaction.Input.Length).Select(x => (double)x).ToArray(),
                 ys: interaction.Input.ToArray(),
-                color: Color.Blue
+                color: ((Color)ViewModel.Plugin.PerformanceGraphColor.Value).ToSystemColor()
             );
             interaction.SetOutput(Unit.Default);
 
@@ -51,7 +49,7 @@ namespace InterFace.Diagnostics
         private Task SetCleanPointGraph(InteractionContext<int, Unit> interaction)
         {
             AvaPlot plot = this.FindControl<AvaPlot>("TrianglePerformancePlot");
-            plot.Plot.AddVerticalLine(interaction.Input, color: Color.Red);
+            plot.Plot.AddVerticalLine(interaction.Input, color: ((Color)ViewModel.Plugin.PerformanceMemoryMarkColor.Value).ToSystemColor());
             interaction.SetOutput(Unit.Default);
 
             return Task.CompletedTask;
