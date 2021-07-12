@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Media;
 using InterFace.Plugin;
 using InterFace.Plugin.Preference;
 using System;
@@ -9,7 +10,11 @@ namespace InterFace.Diagnostics
     public class Plugin : APlugin
     {
         public override IEnumerable<IPreferenceExport> GetPreferences()
-            => Array.Empty<IPreferenceExport>();
+            => new IPreferenceExport[]
+            {
+                new ColorPreference("performanceMainColor", "Performance Graph Color", Color.FromRgb(0, 0, 255)),
+                new ColorPreference("performanceMemoryMarkColor", "Performance Memory Annotation Color", Color.FromRgb(255, 0, 0))
+            };
 
         public override Control GetView()
             => new PluginControl();
