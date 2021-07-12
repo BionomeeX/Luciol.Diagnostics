@@ -2,14 +2,13 @@
 using Avalonia.Media;
 using InterFace.Plugin;
 using InterFace.Plugin.Preference;
-using System;
 using System.Collections.Generic;
 
 namespace InterFace.Diagnostics
 {
     public class Plugin : APlugin
     {
-        public override IEnumerable<IPreferenceExport> GetPreferences()
+        protected override IEnumerable<IPreferenceExport> GetPreferences()
             => new IPreferenceExport[]
             {
                 new ColorPreference("performanceMainColor", "Performance Graph Color", Color.FromRgb(0, 0, 255)),
