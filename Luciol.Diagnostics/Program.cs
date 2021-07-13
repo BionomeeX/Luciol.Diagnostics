@@ -1,6 +1,6 @@
 ﻿using Avalonia;
 
-namespace InterFace.Diagnostics
+namespace Luciol.Diagnostics
 {
     static class Program
     {
@@ -11,6 +11,6 @@ namespace InterFace.Diagnostics
         }
 
         public static AppBuilder BuildAvaloniaApp()
-            => InterFace.Plugin.APlugin.BuildAvaloniaApp<PluginControl, PluginControlViewModel>();
+            => Luciol.Plugin.APlugin.BuildAvaloniaApp<PluginControl, PluginControlViewModel>();
     }
 }

@@ -1,12 +1,12 @@
 ﻿using Avalonia.Threading;
-using InterFace.Plugin;
+using Luciol.Plugin;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
 
-namespace InterFace.Diagnostics
+namespace Luciol.Diagnostics
 {
     public class PluginControlViewModel : ReactiveObject
     {

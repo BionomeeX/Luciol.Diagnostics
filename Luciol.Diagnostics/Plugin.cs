@@ -1,9 +1,9 @@
 ﻿using Avalonia.Controls;
-using InterFace.Plugin;
-using InterFace.Plugin.Preference;
+using Luciol.Plugin;
+using Luciol.Plugin.Preference;
 using System.Collections.Generic;
 
-namespace InterFace.Diagnostics
+namespace Luciol.Diagnostics
 {
     public class Plugin : APlugin
     {

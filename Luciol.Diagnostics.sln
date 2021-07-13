@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31410.414
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterFace.Diagnostics", "InterFace.Diagnostics\InterFace.Diagnostics.csproj", "{DD2D63CB-0D91-4066-8A39-FA3D08C22D2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luciol.Diagnostics", "Luciol.Diagnostics\Luciol.Diagnostics.csproj", "{DD2D63CB-0D91-4066-8A39-FA3D08C22D2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

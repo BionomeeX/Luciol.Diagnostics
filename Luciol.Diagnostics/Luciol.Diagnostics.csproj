@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\InterFace.Plugin\InterFace.Plugin\InterFace.Plugin.csproj" />
+    <ProjectReference Include="..\..\Luciol.Plugin\Luciol.Plugin\Luciol.Plugin.csproj" />
   </ItemGroup>
 
   <ItemGroup>

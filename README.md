@@ -1,2 +1,2 @@
-# InterFace.Diagnostics
-Diagnostic tools for InterFace
+# Luciol.Diagnostics
+Diagnostic tools for Luciol

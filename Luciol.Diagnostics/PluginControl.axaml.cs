@@ -1,14 +1,14 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
-using InterFace.Plugin.Preference;
+using Luciol.Plugin.Preference;
 using ReactiveUI;
 using ScottPlot.Avalonia;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
 
-namespace InterFace.Diagnostics
+namespace Luciol.Diagnostics
 {
     public class PluginControl : ReactiveUserControl<PluginControlViewModel>
     {
