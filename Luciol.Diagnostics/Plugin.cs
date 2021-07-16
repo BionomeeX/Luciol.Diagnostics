@@ -7,26 +7,17 @@ namespace Luciol.Diagnostics
 {
     public class Plugin : APlugin
     {
-        public override IEnumerable<IPreferenceExport> GetPreferences()
+        protected override IEnumerable<IPreferenceExport> GetPreferences()
             => new IPreferenceExport[]
             {
-                PerformanceGraphColor, PerformanceMemoryMarkColor
+                new ColorPreference("performanceMainColor", "Performance Graph Color", Color.Blue),
+                new ColorPreference("performanceMemoryMarkColor", "Performance Memory Annotation Color", Color.Red)
             };
 
-        public ColorPreference PerformanceGraphColor { get; } = new("performanceMainColor", "Performance Graph Color", Color.Blue);
-        public ColorPreference PerformanceMemoryMarkColor { get; } = new("performanceMemoryMarkColor", "Performance Memory Annotation Color", Color.Red);
-
-        public override Control GetView()
+        protected override Control GetView()
             => new PluginControl();
 
-        public override object GetViewModel()
-            => _viewModel;
-
-        protected override void Init()
-        {
-            _viewModel.Init(this, Context);
-        }
-
-        private readonly PluginControlViewModel _viewModel = new();
+        protected override APluginViewModel GetViewModel()
+            => new PluginControlViewModel();
     }
 }

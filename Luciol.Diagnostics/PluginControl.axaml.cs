@@ -39,7 +39,7 @@ namespace Luciol.Diagnostics
             plot.Plot.AddScatter(
                 xs: Enumerable.Range(0, interaction.Input.Length).Select(x => (double)x).ToArray(),
                 ys: interaction.Input.ToArray(),
-                color: ((Color)ViewModel.Plugin.PerformanceGraphColor.Value).ToSystemColor()
+                color: ((Color)ViewModel.Plugin.Preferences["performanceMainColor"].Value).ToSystemColor()
             );
             interaction.SetOutput(Unit.Default);
 
@@ -49,7 +49,7 @@ namespace Luciol.Diagnostics
         private Task SetCleanPointGraph(InteractionContext<int, Unit> interaction)
         {
             AvaPlot plot = this.FindControl<AvaPlot>("TrianglePerformancePlot");
-            plot.Plot.AddVerticalLine(interaction.Input, color: ((Color)ViewModel.Plugin.PerformanceMemoryMarkColor.Value).ToSystemColor());
+            plot.Plot.AddVerticalLine(interaction.Input, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
             interaction.SetOutput(Unit.Default);
 
             return Task.CompletedTask;

@@ -8,21 +8,21 @@ using System.Reactive.Linq;
 
 namespace Luciol.Diagnostics
 {
-    public class PluginControlViewModel : ReactiveObject
+    public class PluginControlViewModel : APluginViewModel
     {
-        public void Init(Plugin plugin, IContext context)
+        public override void Init(APlugin plugin)
         {
             Plugin = plugin;
-            context.MainTriangle.OnDataLoading += (sender, e) =>
+            plugin.Context.MainTriangle.OnDataLoading += (sender, e) =>
             {
                 _triangleLoadTime = DateTime.Now;
             };
-            context.MainTriangle.OnDataLoaded += (sender, e) =>
+            plugin.Context.MainTriangle.OnDataLoaded += (sender, e) =>
             {
                 _points.Add(DateTime.Now.Subtract(_triangleLoadTime).TotalMilliseconds);
                 UpdatePerformanceGraph.Handle(_points.ToArray()).GetAwaiter().GetResult();
             };
-            context.MainTriangle.OnDataCleaned += (sender, e) =>
+            plugin.Context.MainTriangle.OnDataCleaned += (sender, e) =>
             {
                 int count = _points.Count;
                 Dispatcher.UIThread.Post(() => {
@@ -31,9 +31,9 @@ namespace Luciol.Diagnostics
             };
         }
 
+        public APlugin Plugin { set; get; }
         private DateTime _triangleLoadTime;
         private readonly List<double> _points = new();
-        public Plugin Plugin { private set; get; }
 
         public Interaction<double[], Unit> UpdatePerformanceGraph { get; } = new();
         public Interaction<int, Unit> SetCleanPointGraph { get; } = new();
