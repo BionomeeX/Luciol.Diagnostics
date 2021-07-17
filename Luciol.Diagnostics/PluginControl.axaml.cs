@@ -15,18 +15,12 @@ namespace Luciol.Diagnostics
         public PluginControl()
         {
             InitializeComponent();
-            this.WhenActivated(_ =>
+            AttachedToLogicalTree += (sender, e) =>
             {
-                if (!_isInit)
-                {
-                    ViewModel.UpdatePerformanceGraph.RegisterHandler(UpdatePerformanceGraph);
-                    ViewModel.SetCleanPointGraph.RegisterHandler(SetCleanPointGraph);
-                    _isInit = true; // TODO: Can probably be handle by APlugin
-                }
-            });
+                ViewModel.UpdatePerformanceGraph.RegisterHandler(UpdatePerformanceGraph);
+                ViewModel.SetCleanPointGraph.RegisterHandler(SetCleanPointGraph);
+            };
         }
-
-        private bool _isInit;
 
         private void InitializeComponent()
         {
