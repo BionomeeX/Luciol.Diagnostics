@@ -20,13 +20,13 @@ namespace Luciol.Diagnostics
             plugin.Context.MainTriangle.OnDataLoaded += (sender, e) =>
             {
                 _points.Add(DateTime.Now.Subtract(_triangleLoadTime).TotalMilliseconds);
-                UpdatePerformanceGraph.Handle(_points.ToArray()).GetAwaiter().GetResult();
+                UpdatePerformanceGraph.Handle((_points.ToArray(), _lines.ToArray())).GetAwaiter().GetResult();
             };
             plugin.Context.MainTriangle.OnDataCleaned += (sender, e) =>
             {
-                int count = _points.Count;
+                _lines.Add(_points.Count);
                 Dispatcher.UIThread.Post(() => {
-                    SetCleanPointGraph.Handle(count).GetAwaiter().GetResult();
+                    UpdatePerformanceGraph.Handle((_points.ToArray(), _lines.ToArray())).GetAwaiter().GetResult();
                 });
             };
         }
@@ -34,8 +34,8 @@ namespace Luciol.Diagnostics
         public APlugin Plugin { set; get; }
         private DateTime _triangleLoadTime;
         private readonly List<double> _points = new();
+        private readonly List<int> _lines = new();
 
-        public Interaction<double[], Unit> UpdatePerformanceGraph { get; } = new();
-        public Interaction<int, Unit> SetCleanPointGraph { get; } = new();
+        public Interaction<(double[], int[]), Unit> UpdatePerformanceGraph { get; } = new();
     }
 }

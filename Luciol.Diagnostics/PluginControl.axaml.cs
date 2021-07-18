@@ -4,6 +4,8 @@ using Avalonia.ReactiveUI;
 using Luciol.Plugin.Preference;
 using ReactiveUI;
 using ScottPlot.Avalonia;
+using ScottPlot.Plottable;
+using System;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
@@ -18,7 +20,6 @@ namespace Luciol.Diagnostics
             AttachedToLogicalTree += (sender, e) =>
             {
                 ViewModel.UpdatePerformanceGraph.RegisterHandler(UpdatePerformanceGraph);
-                ViewModel.SetCleanPointGraph.RegisterHandler(SetCleanPointGraph);
             };
         }
 
@@ -27,23 +28,21 @@ namespace Luciol.Diagnostics
             AvaloniaXamlLoader.Load(this);
         }
 
-        private Task UpdatePerformanceGraph(InteractionContext<double[], Unit> interaction)
+        private Task UpdatePerformanceGraph(InteractionContext<(double[], int[]), Unit> interaction)
         {
             AvaPlot plot = this.FindControl<AvaPlot>("TrianglePerformancePlot");
+            plot.Plot.Clear();
             plot.Plot.AddScatter(
-                xs: Enumerable.Range(0, interaction.Input.Length).Select(x => (double)x).ToArray(),
-                ys: interaction.Input.ToArray(),
+                xs: Enumerable.Range(0, interaction.Input.Item1.Length).Select(x => (double)x).ToArray(),
+                ys: interaction.Input.Item1.ToArray(),
                 color: ((Color)ViewModel.Plugin.Preferences["performanceMainColor"].Value).ToSystemColor()
             );
-            interaction.SetOutput(Unit.Default);
 
-            return Task.CompletedTask;
-        }
+            foreach (var point in interaction.Input.Item2)
+            {
+                plot.Plot.AddVerticalLine(point, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
+            }
 
-        private Task SetCleanPointGraph(InteractionContext<int, Unit> interaction)
-        {
-            AvaPlot plot = this.FindControl<AvaPlot>("TrianglePerformancePlot");
-            plot.Plot.AddVerticalLine(interaction.Input, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
             interaction.SetOutput(Unit.Default);
 
             return Task.CompletedTask;
