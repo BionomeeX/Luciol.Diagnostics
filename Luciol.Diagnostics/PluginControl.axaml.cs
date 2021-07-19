@@ -4,8 +4,6 @@ using Avalonia.ReactiveUI;
 using Luciol.Plugin.Preference;
 using ReactiveUI;
 using ScottPlot.Avalonia;
-using ScottPlot.Plottable;
-using System;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
