@@ -6,13 +6,25 @@
     <AssemblyName>Diagnostics</AssemblyName>
     <Version>1.0.0</Version>
   </PropertyGroup>
+  <Choose>
+    <When Condition=" '$(CI)'=='true' ">
+      <ItemGroup>
+        <Reference Include="Luciol.Plugin">
+          <HintPath>.\Plugin.dll</HintPath>
+        </Reference>
+        <PackageReference Include="Avalonia" Version="0.10.6" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.6" />
+      </ItemGroup>
+    </When>
+    <When Condition=" '$(CI)'=='' ">
+      <ItemGroup>
+        <ProjectReference Include="..\..\Luciol.Plugin\Luciol.Plugin\Luciol.Plugin.csproj" />
+      </ItemGroup>
+    </When>
+  </Choose>
 
   <ItemGroup>
     <PackageReference Include="ScottPlot.Avalonia" Version="4.1.16" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Luciol.Plugin\Luciol.Plugin\Luciol.Plugin.csproj" />
   </ItemGroup>
 
   <ItemGroup>
