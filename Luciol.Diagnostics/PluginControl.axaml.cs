@@ -1,9 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
+using Hparg;
 using Luciol.Plugin.Preference;
 using ReactiveUI;
-using ScottPlot.Avalonia;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
@@ -28,17 +28,17 @@ namespace Luciol.Diagnostics
 
         private Task UpdatePerformanceGraph(InteractionContext<(double[], int[]), Unit> interaction)
         {
-            AvaPlot plot = this.FindControl<AvaPlot>("TrianglePerformancePlot");
+            var plot = this.FindControl<Manhattan>("TrianglePerformancePlot");
             plot.Plot.Clear();
-            plot.Plot.AddScatter(
-                xs: Enumerable.Range(0, interaction.Input.Item1.Length).Select(x => (double)x).ToArray(),
-                ys: interaction.Input.Item1.ToArray(),
+            plot.Plot.AddPoints(
+                x: Enumerable.Range(0, interaction.Input.Item1.Length).Select(x => (float)x).ToArray(),
+                y: interaction.Input.Item1.Select(x => (float)x).ToArray(),
                 color: ((Color)ViewModel.Plugin.Preferences["performanceMainColor"].Value).ToSystemColor()
             );
 
             foreach (var point in interaction.Input.Item2)
             {
-                plot.Plot.AddVerticalLine(point, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
+                //plot.Plot.AddVerticalLine(point, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
             }
 
             interaction.SetOutput(Unit.Default);

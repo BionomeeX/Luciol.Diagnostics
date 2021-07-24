@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Luciol.Diagnostics.PluginControl"
-             xmlns:ScottPlot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
+             xmlns:Hparg="clr-namespace:Hparg;assembly=Hparg"
              xmlns:views="using:Luciol.Plugin">
   <DockPanel>
     <Grid>
-      <ScottPlot:AvaPlot Name="TrianglePerformancePlot"/>
+      <Hparg:Manhattan Name="TrianglePerformancePlot"/>
     </Grid>
   </DockPanel>
 </UserControl>

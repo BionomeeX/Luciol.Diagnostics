@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -12,6 +12,9 @@
         <Reference Include="Luciol.Plugin">
           <HintPath>.\Plugin.dll</HintPath>
         </Reference>
+        <Reference Include="Hparg">
+          <HintPath>.\Hparg.dll</HintPath>
+        </Reference>
         <PackageReference Include="Avalonia" Version="0.10.6" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.6" />
       </ItemGroup>
@@ -19,13 +22,10 @@
     <When Condition=" '$(CI)'=='' ">
       <ItemGroup>
         <ProjectReference Include="..\..\Luciol.Plugin\Luciol.Plugin\Luciol.Plugin.csproj" />
+        <ProjectReference Include="..\..\Hparg\Hparg\Hparg.csproj" />
       </ItemGroup>
     </When>
   </Choose>
-
-  <ItemGroup>
-    <PackageReference Include="ScottPlot.Avalonia" Version="4.1.16" />
-  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="PluginControl.axaml.cs">
