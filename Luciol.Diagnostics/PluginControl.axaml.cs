@@ -29,8 +29,7 @@ namespace Luciol.Diagnostics
         private Task UpdatePerformanceGraph(InteractionContext<(double[], int[]), Unit> interaction)
         {
             var plot = this.FindControl<Manhattan>("TrianglePerformancePlot");
-            plot.Plot.Clear();
-            plot.Plot.AddPoints(
+            plot.Plot = new(
                 x: Enumerable.Range(0, interaction.Input.Item1.Length).Select(x => (float)x).ToArray(),
                 y: interaction.Input.Item1.Select(x => (float)x).ToArray(),
                 color: ((Color)ViewModel.Plugin.Preferences["performanceMainColor"].Value).ToSystemColor()
