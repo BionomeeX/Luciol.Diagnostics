@@ -37,7 +37,7 @@ namespace Luciol.Diagnostics
 
             foreach (var point in interaction.Input.Item2)
             {
-                //plot.Plot.AddVerticalLine(point, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
+                plot.Plot.AddVerticalLine(point, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
             }
 
             interaction.SetOutput(Unit.Default);

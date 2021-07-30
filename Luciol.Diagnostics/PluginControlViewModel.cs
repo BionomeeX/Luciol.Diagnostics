@@ -24,7 +24,7 @@ namespace Luciol.Diagnostics
             };
             plugin.Context.MainTriangle.OnDataCleaned += (sender, e) =>
             {
-                _lines.Add(_points.Count - 1);
+                _lines.Add(_points.Count);
                 Dispatcher.UIThread.Post(() => {
                     UpdatePerformanceGraph.Handle((_points.ToArray(), _lines.ToArray())).GetAwaiter().GetResult();
                 });
