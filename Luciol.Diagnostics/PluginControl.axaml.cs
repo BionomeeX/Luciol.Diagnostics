@@ -32,7 +32,7 @@ namespace Luciol.Diagnostics
             plot.Plot = new(
                 x: Enumerable.Range(0, interaction.Input.Item1.Length).Select(x => (float)x).ToArray(),
                 y: interaction.Input.Item1.Select(x => (float)x).ToArray(),
-                color: ((Color)ViewModel.Plugin.Preferences["performanceMainColor"].Value).ToSystemColor()
+                color: (Color)ViewModel.Plugin.Context.GlobalSettings.Graph.Preferences["mainColor"].Value
             );
 
             foreach (var point in interaction.Input.Item2)

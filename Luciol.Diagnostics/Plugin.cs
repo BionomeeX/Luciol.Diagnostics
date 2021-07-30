@@ -10,7 +10,6 @@ namespace Luciol.Diagnostics
         protected override IEnumerable<IPreferenceExport> GetPreferences()
             => new IPreferenceExport[]
             {
-                new ColorPreference("performanceMainColor", "Performance Graph Color", Color.Blue),
                 new ColorPreference("performanceMemoryMarkColor", "Performance Memory Annotation Color", Color.Red)
             };
 
