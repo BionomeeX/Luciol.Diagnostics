@@ -8,7 +8,7 @@
              xmlns:views="using:Luciol.Plugin">
   <DockPanel>
     <Grid>
-      <Hparg:Manhattan Name="TrianglePerformancePlot"/>
+      <Hparg:Graph Name="TrianglePerformancePlot"/>
     </Grid>
   </DockPanel>
 </UserControl>
