@@ -16,7 +16,6 @@ jobs:
     - name: Download Luciol.Plugin
       uses: dawidd6/action-download-artifact@v2
       with:
-        github_token: ${{ secrets.RELEASE_ACCESS_TOKEN }}
         workflow: ci.yml
         repo: BionomeeX/Luciol.Plugin
     - name: Download Hparg

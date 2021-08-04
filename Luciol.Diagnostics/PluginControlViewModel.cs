@@ -30,8 +30,8 @@ namespace Luciol.Diagnostics
             };
         }
 
-        public APlugin Plugin { set; get; }
-        private PerformanceInfo _performanceInfo = new();
+        public APlugin Plugin { private set; get; }
+        private readonly PerformanceInfo _performanceInfo = new();
 
         public Interaction<PerformanceInfo, Unit> UpdatePerformanceGraph { get; } = new();
     }
