@@ -10,7 +10,7 @@
     <When Condition=" '$(CI)'=='true' ">
       <ItemGroup>
         <Reference Include="Luciol.Plugin">
-          <HintPath>.\Plugin.dll</HintPath>
+          <HintPath>.\Luciol.Plugin.dll</HintPath>
         </Reference>
         <Reference Include="Hparg">
           <HintPath>.\Hparg.dll</HintPath>

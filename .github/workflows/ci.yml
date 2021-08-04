@@ -24,9 +24,9 @@ jobs:
         workflow: ci.yml
         repo: BionomeeX/Hparg
     - name: Move Plugin to folder
-      run: mv ./Plugin.dll ./Luciol.Diagnostics
+      run: mv ./Plugin.dll/Luciol.Plugin.dll ./Luciol.Diagnostics
     - name: Move Hparg to folder
-      run: mv ./Hparg.dll ./Luciol.Diagnostics
+      run: mv ./Hparg.dll/Hparg.dll ./Luciol.Diagnostics
     - name: Install dependencies
       run: dotnet restore
     - name: Build
