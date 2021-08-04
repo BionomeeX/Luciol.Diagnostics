@@ -1,8 +1,6 @@
 ﻿using Avalonia.Threading;
 using Luciol.Plugin;
 using ReactiveUI;
-using System;
-using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
 
@@ -15,27 +13,26 @@ namespace Luciol.Diagnostics
             Plugin = plugin;
             plugin.Context.MainTriangle.OnDataLoading += (sender, e) =>
             {
-                _triangleLoadTime = DateTime.Now;
+                _performanceInfo.StartTime();
             };
             plugin.Context.MainTriangle.OnDataLoaded += (sender, e) =>
             {
-                _points.Add(DateTime.Now.Subtract(_triangleLoadTime).TotalMilliseconds);
-                UpdatePerformanceGraph.Handle((_points.ToArray(), _lines.ToArray())).GetAwaiter().GetResult();
+                _performanceInfo.CollectTimeInfo();
+                UpdatePerformanceGraph.Handle(_performanceInfo).GetAwaiter().GetResult();
             };
             plugin.Context.MainTriangle.OnDataCleaned += (sender, e) =>
             {
-                _lines.Add(_points.Count);
+                _performanceInfo.AddMemoryCollection();
+                // Graph update must be done on UI thread but OnDataCleaned isn't called from there
                 Dispatcher.UIThread.Post(() => {
-                    UpdatePerformanceGraph.Handle((_points.ToArray(), _lines.ToArray())).GetAwaiter().GetResult();
+                    UpdatePerformanceGraph.Handle(_performanceInfo).GetAwaiter().GetResult();
                 });
             };
         }
 
         public APlugin Plugin { set; get; }
-        private DateTime _triangleLoadTime;
-        private readonly List<double> _points = new();
-        private readonly List<int> _lines = new();
+        private PerformanceInfo _performanceInfo = new();
 
-        public Interaction<(double[], int[]), Unit> UpdatePerformanceGraph { get; } = new();
+        public Interaction<PerformanceInfo, Unit> UpdatePerformanceGraph { get; } = new();
     }
 }
