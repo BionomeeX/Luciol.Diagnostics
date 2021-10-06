@@ -6,7 +6,6 @@ using Luciol.Plugin.Preference;
 using ReactiveUI;
 using System.Linq;
 using System.Reactive;
-using System.Threading.Tasks;
 
 namespace Luciol.Diagnostics
 {
@@ -14,35 +13,35 @@ namespace Luciol.Diagnostics
     {
         public PluginControl()
         {
-            InitializeComponent();
+            AvaloniaXamlLoader.Load(this);
             AttachedToLogicalTree += (sender, e) =>
             {
                 ViewModel.UpdatePerformanceGraph.RegisterHandler(UpdatePerformanceGraph);
             };
         }
 
-        private void InitializeComponent()
+        private void UpdatePerformanceGraph(InteractionContext<PerformanceInfo, Unit> interaction)
         {
-            AvaloniaXamlLoader.Load(this);
-        }
+            // Get performance plot on the view
+            var plot = this.FindControl<Graph>("TrianglePerformancePlot");
 
-        private Task UpdatePerformanceGraph(InteractionContext<(double[], int[]), Unit> interaction)
-        {
-            var plot = this.FindControl<Manhattan>("TrianglePerformancePlot");
-            plot.Plot = new(
-                x: Enumerable.Range(0, interaction.Input.Item1.Length).Select(x => (float)x).ToArray(),
-                y: interaction.Input.Item1.Select(x => (float)x).ToArray(),
+            // Create a new scatter plot with:
+            // On X axis: The index of all our values
+            // On Y axis: All the values to display
+            // Color: The one set by the user in the global preferences
+            plot.Plot = new Scatter(
+                x: Enumerable.Range(0, interaction.Input.Data.Count).Select(x => (float)x).ToArray(),
+                y: interaction.Input.Data.ToArray(),
                 color: (Color)ViewModel.Plugin.Context.GlobalSettings.Graph.Preferences["mainColor"].Value
             );
 
-            foreach (var point in interaction.Input.Item2)
+            // For all memory collection that happened, we display a vertical line there on the graph of the color defined in the plugin preferences
+            foreach (var point in interaction.Input.MemoryCollection)
             {
                 plot.Plot.AddVerticalLine(point, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
             }
 
             interaction.SetOutput(Unit.Default);
-
-            return Task.CompletedTask;
         }
     }
 }
