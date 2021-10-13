@@ -32,7 +32,7 @@ namespace Luciol.Diagnostics
             plot.Plot = new Scatter(
                 x: Enumerable.Range(0, interaction.Input.Data.Count).Select(x => (float)x).ToArray(),
                 y: interaction.Input.Data.ToArray(),
-                color: (Color)ViewModel.Plugin.Context.GlobalSettings.Graph.Preferences["mainColor"].ObjValue
+                color: ViewModel.Plugin.Context.GlobalSettings.Graph.MainColor.Value
             );
 
             // For all memory collection that happened, we display a vertical line there on the graph of the color defined in the plugin preferences
