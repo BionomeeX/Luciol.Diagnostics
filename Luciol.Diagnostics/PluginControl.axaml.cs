@@ -32,13 +32,13 @@ namespace Luciol.Diagnostics
             plot.Plot = new Scatter(
                 x: Enumerable.Range(0, interaction.Input.Data.Count).Select(x => (float)x).ToArray(),
                 y: interaction.Input.Data.ToArray(),
-                color: (Color)ViewModel.Plugin.Context.GlobalSettings.Graph.Preferences["mainColor"].Value
+                color: (Color)ViewModel.Plugin.Context.GlobalSettings.Graph.Preferences["mainColor"].ObjValue
             );
 
             // For all memory collection that happened, we display a vertical line there on the graph of the color defined in the plugin preferences
             foreach (var point in interaction.Input.MemoryCollection)
             {
-                plot.Plot.AddVerticalLine(point, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].Value).ToSystemColor());
+                plot.Plot.AddVerticalLine(point, color: ((Color)ViewModel.Plugin.Preferences["performanceMemoryMarkColor"].ObjValue).ToSystemColor());
             }
 
             interaction.SetOutput(Unit.Default);
