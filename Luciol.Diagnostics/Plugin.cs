@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace Luciol.Diagnostics
 {
-    public class Plugin : APlugin
+    public class Plugin : ADisplayPlugin
     {
         protected override IEnumerable<IPreferenceExport> GetPreferences()
             => new IPreferenceExport[]
