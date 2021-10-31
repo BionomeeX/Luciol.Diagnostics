@@ -8,7 +8,7 @@ namespace Luciol.Diagnostics
 {
     public class PluginControlViewModel : APluginViewModel
     {
-        public override void Init(APlugin plugin)
+        public override void Init(ADisplayPlugin plugin)
         {
             Plugin = plugin;
             plugin.Context.MainTriangle.OnDataLoading += (sender, e) =>
@@ -30,7 +30,7 @@ namespace Luciol.Diagnostics
             };
         }
 
-        public APlugin Plugin { private set; get; }
+        public ADisplayPlugin Plugin { private set; get; }
         private readonly PerformanceInfo _performanceInfo = new();
 
         public Interaction<PerformanceInfo, Unit> UpdatePerformanceGraph { get; } = new();
