@@ -11,16 +11,16 @@ namespace Luciol.Diagnostics
         public override void Init(ADisplayPlugin plugin)
         {
             Plugin = plugin;
-            plugin.Context.MainTriangle.OnDataLoading += (sender, e) =>
+            plugin.Context.SNPTriangle.OnDataLoading += (sender, e) =>
             {
                 _performanceInfo.StartTime();
             };
-            plugin.Context.MainTriangle.OnDataLoaded += (sender, e) =>
+            plugin.Context.SNPTriangle.OnDataLoaded += (sender, e) =>
             {
                 _performanceInfo.CollectTimeInfo();
                 UpdatePerformanceGraph.Handle(_performanceInfo).GetAwaiter().GetResult();
             };
-            plugin.Context.MainTriangle.OnDataCleaned += (sender, e) =>
+            plugin.Context.SNPTriangle.OnDataCleaned += (sender, e) =>
             {
                 _performanceInfo.AddMemoryCollection();
                 // Graph update must be done on UI thread but OnDataCleaned isn't called from there
