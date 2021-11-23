@@ -18,14 +18,14 @@ namespace Luciol.Diagnostics
             plugin.Context.SNPTriangle.OnDataLoaded += (sender, e) =>
             {
                 _performanceInfo.CollectTimeInfo();
-                UpdatePerformanceGraph.Handle(_performanceInfo).GetAwaiter().GetResult();
+                UpdatePerformanceGraph.Handle(_performanceInfo).Subscribe(Observer.Create<Unit>(_ => { }));
             };
             plugin.Context.SNPTriangle.OnDataCleaned += (sender, e) =>
             {
                 _performanceInfo.AddMemoryCollection();
                 // Graph update must be done on UI thread but OnDataCleaned isn't called from there
                 Dispatcher.UIThread.Post(() => {
-                    UpdatePerformanceGraph.Handle(_performanceInfo).GetAwaiter().GetResult();
+                    UpdatePerformanceGraph.Handle(_performanceInfo).Subscribe(Observer.Create<Unit>(_ => { }));
                 });
             };
         }
