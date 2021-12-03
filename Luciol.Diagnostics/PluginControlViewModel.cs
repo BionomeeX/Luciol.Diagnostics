@@ -2,7 +2,6 @@
 using Luciol.Plugin;
 using ReactiveUI;
 using System.Reactive;
-using System.Reactive.Linq;
 
 namespace Luciol.Diagnostics
 {
@@ -11,16 +10,16 @@ namespace Luciol.Diagnostics
         public override void Init(ADisplayPlugin plugin)
         {
             Plugin = plugin;
-            plugin.Context.SNPTriangle.OnDataLoading += (sender, e) =>
+            plugin.Context.PositionTriangle.OnDataLoading += (sender, e) =>
             {
                 _performanceInfo.StartTime();
             };
-            plugin.Context.SNPTriangle.OnDataLoaded += (sender, e) =>
+            plugin.Context.PositionTriangle.OnDataLoaded += (sender, e) =>
             {
                 _performanceInfo.CollectTimeInfo();
                 UpdatePerformanceGraph.Handle(_performanceInfo).Subscribe(Observer.Create<Unit>(_ => { }));
             };
-            plugin.Context.SNPTriangle.OnDataCleaned += (sender, e) =>
+            plugin.Context.PositionTriangle.OnDataCleaned += (sender, e) =>
             {
                 _performanceInfo.AddMemoryCollection();
                 // Graph update must be done on UI thread but OnDataCleaned isn't called from there
