@@ -11,9 +11,9 @@ namespace Luciol.Diagnostics
 
         public override PluginType PluginType => PluginType.Display;
 
-        protected override string Name => "Diagnostics";
+        public override string Name => "Diagnostics";
 
-        protected override string Author => "BionomeeX";
+        public override string Author => "BionomeeX";
 
         protected override Type Plugin => typeof(Plugin);
     }
