@@ -1,5 +1,4 @@
-﻿using Avalonia.Controls;
-using Luciol.Plugin;
+﻿using Luciol.Plugin;
 using Luciol.Plugin.Preference;
 using System.Collections.Generic;
 
@@ -13,7 +12,7 @@ namespace Luciol.Diagnostics
                 new ColorPreference("performanceMemoryMarkColor", "Performance Memory Annotation Color", Color.Red)
             };
 
-        protected override Control GetView()
+        protected override IPluginView GetView()
             => new PluginControl();
 
         protected override APluginViewModel GetViewModel()

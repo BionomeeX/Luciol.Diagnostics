@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Hparg;
+using Luciol.Plugin;
 using Luciol.Plugin.Preference;
 using ReactiveUI;
 using System.Linq;
@@ -9,15 +10,16 @@ using System.Reactive;
 
 namespace Luciol.Diagnostics
 {
-    public class PluginControl : ReactiveUserControl<PluginControlViewModel>
+    public class PluginControl : APluginView<PluginControlViewModel>
     {
         public PluginControl()
         {
             AvaloniaXamlLoader.Load(this);
-            AttachedToLogicalTree += (sender, e) =>
-            {
-                ViewModel.UpdatePerformanceGraph.RegisterHandler(UpdatePerformanceGraph);
-            };
+        }
+
+        public override void Init(ADisplayPlugin plugin)
+        {
+            ViewModel.UpdatePerformanceGraph.RegisterHandler(UpdatePerformanceGraph);
         }
 
         private void UpdatePerformanceGraph(InteractionContext<PerformanceInfo, Unit> interaction)
