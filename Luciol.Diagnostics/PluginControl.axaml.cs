@@ -1,11 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Avalonia.ReactiveUI;
 using Hparg;
 using Luciol.Plugin;
 using Luciol.Plugin.Preference;
 using ReactiveUI;
-using System.Linq;
 using System.Reactive;
 
 namespace Luciol.Diagnostics

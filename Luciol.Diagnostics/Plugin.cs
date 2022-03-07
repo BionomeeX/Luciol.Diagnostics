@@ -1,6 +1,5 @@
 ﻿using Luciol.Plugin;
 using Luciol.Plugin.Preference;
-using System.Collections.Generic;
 
 namespace Luciol.Diagnostics
 {

@@ -1,5 +1,4 @@
 ﻿using Luciol.Plugin;
-using System;
 
 namespace Luciol.Diagnostics
 {
