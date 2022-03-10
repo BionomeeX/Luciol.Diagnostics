@@ -21,6 +21,7 @@ namespace Luciol.Diagnostics
                     UpdatePerformanceGraph.Handle(_performanceInfo).Subscribe(Observer.Create<Unit>(_ => { }));
                 });
             };
+            /*
             plugin.Context.PositionTriangle.OnDataCleaned += (sender, e) =>
             {
                 _performanceInfo.AddMemoryCollection();
@@ -29,6 +30,7 @@ namespace Luciol.Diagnostics
                     UpdatePerformanceGraph.Handle(_performanceInfo).Subscribe(Observer.Create<Unit>(_ => { }));
                 });
             };
+            */
         }
 
         public ADisplayPlugin Plugin { private set; get; }

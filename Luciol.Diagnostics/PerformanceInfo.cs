@@ -17,7 +17,12 @@ namespace Luciol.Diagnostics
         /// </summary>
         public void CollectTimeInfo()
         {
-            _data.Add((float)DateTime.Now.Subtract(_performanceTimer).TotalMilliseconds);
+            var delay = (float)DateTime.Now.Subtract(_performanceTimer).TotalMilliseconds;
+            if (_data.Count == 200)
+            {
+                _data.RemoveAt(0);
+            }
+            _data.Add(delay);
         }
 
         /// <summary>
