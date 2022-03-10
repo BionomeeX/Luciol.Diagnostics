@@ -17,7 +17,9 @@ namespace Luciol.Diagnostics
             plugin.Context.PositionTriangle.OnDataLoaded += (sender, e) =>
             {
                 _performanceInfo.CollectTimeInfo();
-                UpdatePerformanceGraph.Handle(_performanceInfo).Subscribe(Observer.Create<Unit>(_ => { }));
+                Dispatcher.UIThread.Post(() => {
+                    UpdatePerformanceGraph.Handle(_performanceInfo).Subscribe(Observer.Create<Unit>(_ => { }));
+                });
             };
             plugin.Context.PositionTriangle.OnDataCleaned += (sender, e) =>
             {
