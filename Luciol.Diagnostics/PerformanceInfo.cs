@@ -1,9 +1,15 @@
-﻿using System.Collections.ObjectModel;
+﻿using Luciol.Plugin.Preference;
+using System.Collections.ObjectModel;
 
 namespace Luciol.Diagnostics
 {
     public class PerformanceInfo
     {
+        public PerformanceInfo(Plugin plugin)
+        {
+            _plugin = plugin;
+        }
+
         /// <summary>
         /// Start performance timer
         /// </summary>
@@ -18,7 +24,7 @@ namespace Luciol.Diagnostics
         public void CollectTimeInfo()
         {
             var delay = (float)DateTime.Now.Subtract(_performanceTimer).TotalMilliseconds;
-            if (_data.Count == 200)
+            while (_data.Count >= ((NumberInputTextPreference<int>)_plugin.Preferences["nbPerformanceData"]).Value)
             {
                 _data.RemoveAt(0);
             }
@@ -65,5 +71,6 @@ namespace Luciol.Diagnostics
         /// Values stored are the offset in _data List
         /// </summary>
         private readonly List<int> _memoryCollection = new();
+        private readonly Plugin _plugin;
     }
 }

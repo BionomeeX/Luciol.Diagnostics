@@ -8,7 +8,8 @@ namespace Luciol.Diagnostics
         protected override IEnumerable<IPreferenceExport> GetPreferences()
             => new IPreferenceExport[]
             {
-                new ColorPreference("performanceMemoryMarkColor", "Performance Memory Annotation Color", Color.Red)
+                new ColorPreference("performanceMemoryMarkColor", "Performance memory annotation color", Color.Red),
+                new NumberInputTextPreference<int>("nbPerformanceData", "Number of data displayed by performance graph", 200)
             };
 
         protected override IPluginView GetView()
