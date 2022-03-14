@@ -7,8 +7,27 @@
              xmlns:Hparg="clr-namespace:Hparg;assembly=Hparg"
              xmlns:views="using:Luciol.Plugin">
   <DockPanel>
-    <Grid>
-      <Hparg:Graph Name="TrianglePerformancePlot"/>
-    </Grid>
+	  <Grid>
+		  <Grid.RowDefinitions>
+			  <RowDefinition Height="*"/>
+			  <RowDefinition Height="*"/>
+		  </Grid.RowDefinitions>
+
+		  <Hparg:Graph Grid.Row="0" Name="TrianglePerformancePlot"/>
+
+		  <Grid Grid.Row="1">
+			  <Grid.ColumnDefinitions>
+				  <ColumnDefinition Width="*"/>
+				  <ColumnDefinition Width="125"/>
+			  </Grid.ColumnDefinitions>
+
+			  <TextBox Grid.Column="0"></TextBox>
+			  <StackPanel Grid.Column="1"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Center">
+				  <Button Command="{Binding RefreshAll}">Refresh all files</Button>
+			  </StackPanel>
+		  </Grid>
+	  </Grid>
   </DockPanel>
 </UserControl>

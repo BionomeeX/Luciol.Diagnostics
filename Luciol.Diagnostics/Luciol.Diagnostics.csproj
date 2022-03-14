@@ -28,6 +28,11 @@
       </ItemGroup>
     </When>
   </Choose>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Luciol.Fisher-BoxPlot\Luciol.Fisher-BoxPlot\Luciol.Fisher-BoxPlot.csproj" />
+    <ProjectReference Include="..\..\Luciol.GENO\Luciol.GENO\Luciol.GENO.csproj" />
+    <ProjectReference Include="..\..\Luciol.NEO\Luciol.NEO\Luciol.NEO.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="PluginControl.axaml.cs">

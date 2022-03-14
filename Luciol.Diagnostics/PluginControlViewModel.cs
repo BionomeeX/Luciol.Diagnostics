@@ -2,11 +2,27 @@
 using Luciol.Plugin;
 using ReactiveUI;
 using System.Reactive;
+using System.Windows.Input;
 
 namespace Luciol.Diagnostics
 {
     public class PluginControlViewModel : APluginViewModel
     {
+        public PluginControlViewModel()
+        {
+            RefreshAll = ReactiveCommand.Create(() =>
+            {
+                var fisher = Plugin.GetDependency<Fisher_BoxPlot.Plugin>();
+                var neo = Plugin.GetDependency<NEO.Plugin>();
+                var geno = Plugin.GetDependency<GENO.Plugin>();
+
+                if (fisher != null)
+                {
+                    fisher.LoadData();
+                }
+            });
+        }
+
         public override void Init(ADisplayPlugin plugin)
         {
             Plugin = plugin;
@@ -38,5 +54,7 @@ namespace Luciol.Diagnostics
         private PerformanceInfo _performanceInfo;
 
         public Interaction<PerformanceInfo, Unit> UpdatePerformanceGraph { get; } = new();
+
+        public ICommand RefreshAll { private set; get; }
     }
 }

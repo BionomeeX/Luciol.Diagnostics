@@ -15,5 +15,11 @@ namespace Luciol.Diagnostics
         public override string Author => "BionomeeX";
 
         protected override Type Plugin => typeof(Plugin);
+        public override Dependency[] Dependencies => new[]
+        {
+            new Dependency(typeof(Fisher_BoxPlot.PluginInfo), isMandatory: false),
+            new Dependency(typeof(NEO.PluginInfo), isMandatory: false),
+            new Dependency(typeof(GENO.PluginInfo), isMandatory: false)
+        };
     }
 }
