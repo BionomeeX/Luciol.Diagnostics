@@ -20,6 +20,16 @@ namespace Luciol.Diagnostics
                 {
                     fisher.LoadData();
                 }
+
+                if (neo != null)
+                {
+                    neo.MainTriangle.ClearCache();
+                }
+
+                if (geno != null)
+                {
+                    geno.LoadData();
+                }
             });
         }
 
