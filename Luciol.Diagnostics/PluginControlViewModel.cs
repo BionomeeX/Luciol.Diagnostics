@@ -10,6 +10,7 @@ namespace Luciol.Diagnostics
         public override void Init(ADisplayPlugin plugin)
         {
             Plugin = plugin;
+            _performanceInfo = new(Plugin);
             plugin.Context.PositionTriangle.OnDataLoading += (sender, e) =>
             {
                 _performanceInfo.StartTime();
@@ -34,7 +35,7 @@ namespace Luciol.Diagnostics
         }
 
         public ADisplayPlugin Plugin { private set; get; }
-        private readonly PerformanceInfo _performanceInfo = new();
+        private PerformanceInfo _performanceInfo;
 
         public Interaction<PerformanceInfo, Unit> UpdatePerformanceGraph { get; } = new();
     }

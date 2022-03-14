@@ -1,11 +1,12 @@
-﻿using Luciol.Plugin.Preference;
+﻿using Luciol.Plugin;
+using Luciol.Plugin.Preference;
 using System.Collections.ObjectModel;
 
 namespace Luciol.Diagnostics
 {
     public class PerformanceInfo
     {
-        public PerformanceInfo(Plugin plugin)
+        public PerformanceInfo(APlugin plugin)
         {
             _plugin = plugin;
         }
@@ -71,6 +72,6 @@ namespace Luciol.Diagnostics
         /// Values stored are the offset in _data List
         /// </summary>
         private readonly List<int> _memoryCollection = new();
-        private readonly Plugin _plugin;
+        private readonly APlugin _plugin;
     }
 }
