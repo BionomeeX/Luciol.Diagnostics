@@ -23,7 +23,7 @@ namespace Luciol.Diagnostics
 
                 if (neo != null)
                 {
-                    neo.MainTriangle.ClearCache();
+                    neo.ReloadData();
                 }
 
                 if (geno != null)
