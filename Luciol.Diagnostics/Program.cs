@@ -11,6 +11,6 @@ namespace Luciol.Diagnostics
         }
 
         public static AppBuilder BuildAvaloniaApp()
-            => Luciol.Plugin.ADisplayPlugin.BuildAvaloniaApp<PluginControl, PluginControlViewModel>();
+            => Luciol.Plugin.Core.ADisplayPlugin.BuildAvaloniaApp<PluginControl, PluginControlViewModel>();
     }
 }

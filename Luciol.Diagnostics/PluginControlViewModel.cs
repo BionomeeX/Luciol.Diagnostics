@@ -1,5 +1,5 @@
 ﻿using Avalonia.Threading;
-using Luciol.Plugin;
+using Luciol.Plugin.Core;
 using ReactiveUI;
 using System.Reactive;
 using System.Windows.Input;

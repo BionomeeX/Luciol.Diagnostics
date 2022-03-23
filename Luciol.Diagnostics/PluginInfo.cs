@@ -1,4 +1,4 @@
-﻿using Luciol.Plugin;
+﻿using Luciol.Plugin.Core;
 
 namespace Luciol.Diagnostics
 {

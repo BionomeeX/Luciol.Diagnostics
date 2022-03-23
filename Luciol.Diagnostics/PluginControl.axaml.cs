@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Hparg;
-using Luciol.Plugin;
+using Luciol.Plugin.Core;
 using Luciol.Plugin.Preference;
 using ReactiveUI;
 using System.Reactive;
