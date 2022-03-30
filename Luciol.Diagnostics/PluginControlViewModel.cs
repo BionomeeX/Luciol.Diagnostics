@@ -12,14 +12,10 @@ namespace Luciol.Diagnostics
         {
             RefreshAll = ReactiveCommand.Create(() =>
             {
+                //TODO
                 var fisher = Plugin.GetDependency<Fisher_BoxPlot.Plugin>();
                 var neo = Plugin.GetDependency<NEO.Plugin>();
                 var geno = Plugin.GetDependency<GENO.Plugin>();
-
-                if (fisher != null)
-                {
-                    fisher.LoadData();
-                }
 
                 if (neo != null)
                 {
