@@ -15,16 +15,10 @@ namespace Luciol.Diagnostics
                 //TODO
                 var fisher = Plugin.GetDependency<Fisher_BoxPlot.Plugin>();
                 var neo = Plugin.GetDependency<NEO.Plugin>();
-                var geno = Plugin.GetDependency<GENO.Plugin>();
 
                 if (neo != null)
                 {
                     neo.ReloadData();
-                }
-
-                if (geno != null)
-                {
-                    geno.LoadData();
                 }
             });
         }
