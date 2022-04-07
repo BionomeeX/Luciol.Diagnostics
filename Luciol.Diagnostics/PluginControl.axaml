@@ -27,7 +27,7 @@
 			  <StackPanel Grid.Column="1"
 						  VerticalAlignment="Center"
 						  HorizontalAlignment="Center">
-				  <Button Command="{Binding RefreshAll}">Refresh all files</Button>
+				  <Button Command="{Binding Crash}">Simulate crash</Button>
 			  </StackPanel>
 		  </Grid>
 	  </Grid>

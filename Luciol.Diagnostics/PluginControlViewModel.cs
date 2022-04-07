@@ -10,16 +10,9 @@ namespace Luciol.Diagnostics
     {
         public PluginControlViewModel()
         {
-            RefreshAll = ReactiveCommand.Create(() =>
+            Crash = ReactiveCommand.Create(() =>
             {
-                //TODO
-                var fisher = Plugin.GetDependency<Fisher_BoxPlot.Plugin>();
-                var neo = Plugin.GetDependency<NEO.Plugin>();
-
-                if (neo != null)
-                {
-                    neo.ReloadData();
-                }
+                throw new Exception();
             });
         }
 
@@ -55,6 +48,6 @@ namespace Luciol.Diagnostics
 
         public Interaction<PerformanceInfo, Unit> UpdatePerformanceGraph { get; } = new();
 
-        public ICommand RefreshAll { private set; get; }
+        public ICommand Crash { private set; get; }
     }
 }
