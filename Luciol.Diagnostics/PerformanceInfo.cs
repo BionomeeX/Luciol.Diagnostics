@@ -67,7 +67,7 @@ namespace Luciol.Diagnostics
         private DateTime _performanceTimer;
         /// <summary>
         /// Contains information about where Luciol memory collection passed
-        /// Triangle data are loaded in the RAM so we don't need to read them from files everytimes
+        /// EpistaticMap data are loaded in the RAM so we don't need to read them from files everytimes
         /// But when too many are opened, we need to close some of them: that's what we call "memory collection"
         /// Values stored are the offset in _data List
         /// </summary>
