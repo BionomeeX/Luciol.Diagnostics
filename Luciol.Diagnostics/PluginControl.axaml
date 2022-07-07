@@ -21,9 +21,6 @@
 				  <ColumnDefinition Width="125"/>
 			  </Grid.ColumnDefinitions>
 
-			  <TextBox Grid.Column="0"
-					   IsReadOnly="True"
-					   Text="{Binding TextLogs}"></TextBox>
 			  <StackPanel Grid.Column="1"
 						  VerticalAlignment="Center"
 						  HorizontalAlignment="Center">
