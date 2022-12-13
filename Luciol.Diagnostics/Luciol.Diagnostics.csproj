@@ -8,26 +8,11 @@
 	<Nullable>enable</Nullable>
     <AssemblyName>Diagnostics</AssemblyName>
   </PropertyGroup>
-  <Choose>
-    <When Condition=" '$(CI)'=='true' ">
-      <ItemGroup>
-        <Reference Include="Luciol.Plugin">
-          <HintPath>.\Luciol.Plugin.dll</HintPath>
-        </Reference>
-        <Reference Include="Hparg">
-          <HintPath>.\Hparg.dll</HintPath>
-        </Reference>
-        <PackageReference Include="Avalonia" Version="0.10.6" />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.6" />
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(CI)'=='' ">
-      <ItemGroup>
-        <ProjectReference Include="..\..\Luciol.Plugin\Luciol.Plugin\Luciol.Plugin.csproj" />
-        <ProjectReference Include="..\..\Hparg\Hparg\Hparg.csproj" />
-      </ItemGroup>
-    </When>
-  </Choose>
+
+  <ItemGroup>
+	<ProjectReference Include="..\..\Luciol.Plugin\Luciol.Plugin\Luciol.Plugin.csproj" />
+	<ProjectReference Include="..\..\Hparg\Hparg\Hparg.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="PluginControl.axaml.cs">
