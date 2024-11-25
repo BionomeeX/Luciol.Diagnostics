@@ -14,12 +14,12 @@ jobs:
       with:
         dotnet-version: 5.0.100
     - name: Download Luciol.Plugin
-      uses: dawidd6/action-download-artifact@v2
+      uses: dawidd6/action-download-artifact@v6
       with:
         workflow: ci.yml
         repo: BionomeeX/Luciol.Plugin
     - name: Download Hparg
-      uses: dawidd6/action-download-artifact@v2
+      uses: dawidd6/action-download-artifact@v6
       with:
         workflow: ci.yml
         repo: BionomeeX/Hparg
